@@ -5,6 +5,7 @@ import { ModalProvider, ModalConsumer } from "./Modal.context";
 import Column from "./Column";
 import Modal from "./Modal";
 import TaskForm from "./TaskForm";
+import { stages } from "./utils";
 
 const app = css({
   height: "100%",
@@ -22,9 +23,10 @@ const appInner = css({
 
 class App extends Component {
   getTasksByStage = (tasks, stage) => {
-    return Object.keys(tasks).reduce(function(r, id) {
-      if (tasks[id].stage === stage) r[id] = tasks[id];
-      return r;
+    return Object.keys(tasks).reduce(function(filteredTasks, currentId) {
+      if (tasks[currentId].stage === stage)
+        filteredTasks[currentId] = tasks[currentId];
+      return filteredTasks;
     }, {});
   };
 
@@ -40,23 +42,15 @@ class App extends Component {
                   {({ shouldShowModal }) => (
                     <div className={app}>
                       <div className={appInner}>
-                        <Column
-                          heading='Backlog'
-                          canCreateTask
-                          stage='backlog'
-                          tasks={this.getTasksByStage(tasks, "backlog")}
-                        />
-                        <Column
-                          heading='In Progress'
-                          canCreateTask
-                          stage='inProgress'
-                          tasks={this.getTasksByStage(tasks, "inProgress")}
-                        />
-                        <Column
-                          heading='Completed'
-                          stage='completed'
-                          tasks={this.getTasksByStage(tasks, "completed")}
-                        />
+                        {Object.entries(stages).map(([key, value]) => (
+                          <Column
+                            key={key}
+                            heading={value}
+                            canCreateTask={value !== stages.completed}
+                            stage={key}
+                            tasks={this.getTasksByStage(tasks, key)}
+                          />
+                        ))}
                         {shouldShowModal && (
                           <Modal>
                             <TaskForm {...currentTask} />

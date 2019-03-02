@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import uuid from "uuid/v4";
+import { stages } from "./utils";
 
 const AppContext = React.createContext();
 export const useApp = () => useContext(AppContext);
@@ -28,12 +29,18 @@ export class AppProvider extends React.Component {
     this.setState({ tasks: { ...this.state.tasks, ...newTask } });
   };
 
-  updateTaskStage = (taskId, stage) => {
-    debugger;
+  updateTaskStage = (taskId, newStage) => {
+    // if (newStage === stages.completed){
+
+    // }
+    const newDueDate =
+      newStage === stages.completed
+        ? "today"
+        : this.state.tasks[taskId].dueDate;
     this.setState({
       tasks: {
         ...this.state.tasks,
-        [taskId]: { ...this.state[taskId], stage },
+        [taskId]: { ...this.state.tasks[taskId], stage: newStage },
       },
     });
   };

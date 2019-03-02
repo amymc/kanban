@@ -36,7 +36,6 @@ const Column = ({ canCreateTask, heading, tasks, stage }) => {
     <div className={column}>
       <h2 className={h2}>{heading}</h2>
       {Object.entries(tasks).map(([id, task], index) => {
-        debugger;
         return <Card key={index} id={id} {...task} />;
       })}
       {canCreateTask && (
