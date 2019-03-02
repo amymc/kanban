@@ -1,32 +1,94 @@
-import React, { useState } from 'react';
-import { css } from 'emotion';
-import { useModal } from './Modal.context';
-import { useApp } from './App.context';
-import Button from './Button';
+import React, { useState } from "react";
+import { css } from "emotion";
+import { useModal } from "./Modal.context";
+import { useApp } from "./App.context";
+import Button from "./Button";
 
 const taskForm = css({
-  display: 'flex',
-  flexDirection: 'column',
+  display: "flex",
+  flexDirection: "column",
 });
 
-const TaskForm = () => {
-  debugger
-  const { toggleModal } = useModal();
-  const { createTask } = useApp();
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [dueDate, setDueDate] = useState("");
+const heading = css({
+  margin: "0 0 12px 0",
+  fontSize: 16,
+});
 
-    return (
-      <div className={taskForm}>
-        <h1> Create New Task </h1>
-        <input type="text" value={title} placeholder='Title' name="title" onChange={e => setTitle(e.target.value)} />
-        <input type="text" value={description} placeholder='Description' name="description" onChange={e => setDescription(e.target.value)} />
-        <input type="date" value={dueDate} placeholder='Due on' name="dueDate" onChange={e => setDueDate(e.target.value)}/>
-        <Button label="Cancel" onClick={toggleModal}/>
-        <Button label="Create" onClick={(title, description, dueDate) => createTask(title, description, dueDate)}/>
+const input = css({
+  height: 32,
+  border: "2px solid #e9e9ef",
+  borderRadius: 5,
+  padding: 5,
+  margin: "5px 0",
+});
+
+const buttonWrapper = css({
+  display: "flex",
+  justifyContent: "flex-end",
+});
+
+const TaskForm = ({ title, description, dueDate }) => {
+  const { toggleModal } = useModal();
+  const { createTask, deleteTask } = useApp();
+  debugger;
+
+  const [values, setValues] = useState({
+    title: title || "",
+    description: description || "",
+    dueDate: dueDate || "",
+  });
+
+  const onChange = e => {
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const onSubmit = e => {
+    e.preventDefault();
+    createTask(values);
+    toggleModal();
+  };
+
+  return (
+    <form className={taskForm}>
+      <h1 className={heading}> {title ? `Edit task` : `Create New Task`} </h1>
+      <input
+        type='text'
+        value={values.title}
+        placeholder='Title'
+        name='title'
+        className={input}
+        onChange={onChange}
+      />
+      <input
+        type='text'
+        value={values.description}
+        placeholder='Description'
+        name='description'
+        className={input}
+        onChange={onChange}
+      />
+      <input
+        type='text'
+        onFocus={e => (e.currentTarget.type = "date")}
+        onBlur={e => (e.currentTarget.type = "text")}
+        value={values.dueDate}
+        placeholder='Due on'
+        name='dueDate'
+        className={input}
+        onChange={onChange}
+      />
+
+      <div className={buttonWrapper}>
+        <Button label='Delete' type='danger' onClick={deleteTask} />
+        {title && <Button label='Delete' onClick={deleteTask} />}
+        <Button label='Cancel' onClick={toggleModal} />
+        <Button label='Create' onClick={onSubmit} />
       </div>
-    );
-  }
+    </form>
+  );
+};
 
 export default TaskForm;

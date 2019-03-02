@@ -5,11 +5,12 @@ export const useModal = () => useContext(ModalContext);
 
 export class ModalProvider extends React.Component {
   state = {
+    stage: null,
     shouldShowModal: false,
   }
 
-  toggleModal = () => {
-    this.setState({ shouldShowModal: !this.state.shouldShowModal })
+  toggleModal = (stage) => {
+    this.setState({ shouldShowModal: !this.state.shouldShowModal, stage })
   }
 
   render() {
@@ -19,6 +20,7 @@ export class ModalProvider extends React.Component {
         value={{
           toggleModal: this.toggleModal,
           shouldShowModal: state.shouldShowModal,
+          stage: state.stage,
         }}
       >
         {props.children}
