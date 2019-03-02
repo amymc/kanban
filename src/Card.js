@@ -12,10 +12,13 @@ const card = css({
   },
 });
 
+const body = css({
+  padding: "18px 14px 14px 14px",
+});
+
 const Card = ({ description, dueDate, id, title, stage }) => {
   const { onChange, updateTaskStage } = useApp();
   const { toggleModal } = useModal();
-  debugger;
 
   const onClick = e => {
     e.stopPropagation();
@@ -65,10 +68,10 @@ const Card = ({ description, dueDate, id, title, stage }) => {
 
   return (
     <div className={card}>
-      <section onClick={onClick}>
+      <section className={body} onClick={onClick}>
         {title}
         {stages[stage] === stages.completed ? `Completed` : `Due`}{" "}
-        {dueDate.toDateString()}
+        {new Date(dueDate).toDateString()}
         {description}
       </section>
       {renderButtons(stage)}

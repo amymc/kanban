@@ -7,8 +7,9 @@ const button = css`
   background-color: #60a7f0;
   color: #fff;
   border: none;
-  fontFamily: Arial, Helvetica, sans-serif;
-  fontSize: 14;
+  border-radius: 8px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14;
   &:hover: {
     backgroundColor: #7858f6;
     cursor: pointer;
@@ -18,6 +19,10 @@ const button = css`
 const danger = css`
   margin-right: auto;
   color: #ec3330;
+`;
+
+const large = css`
+  border-radius: none;
 `;
 
 const Button = ({ label, onClick, type }) => {

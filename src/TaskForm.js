@@ -52,7 +52,7 @@ const TaskForm = ({ title, description, dueDate, id }) => {
   };
 
   return (
-    <form className={taskForm}>
+    <form className={taskForm} onSubmit={onSubmit}>
       <h1 className={heading}> {title ? `Edit task` : `Create New Task`} </h1>
       <input
         type='text'
@@ -61,6 +61,7 @@ const TaskForm = ({ title, description, dueDate, id }) => {
         name='title'
         className={input}
         onChange={onChange}
+        required
       />
       <input
         type='text'
@@ -79,13 +80,14 @@ const TaskForm = ({ title, description, dueDate, id }) => {
         name='dueDate'
         className={input}
         onChange={onChange}
+        required
       />
 
       <div className={buttonWrapper}>
         <Button label='Delete' type='danger' onClick={e => deleteTask(e, id)} />
         {title && <Button label='Delete' onClick={e => deleteTask(e, id)} />}
         <Button label='Cancel' onClick={toggleModal} />
-        <Button label='Create' onClick={onSubmit} />
+        <input type='submit' label='Create' />
       </div>
     </form>
   );

@@ -12,7 +12,7 @@ const column = css({
   justifyContent: "space-between",
   overflow: "hidden",
   backgroundColor: "#fff",
-  borderRadius: 16,
+  borderRadius: 8,
   margin: "0 8px",
 });
 
