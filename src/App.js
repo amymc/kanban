@@ -34,7 +34,7 @@ class App extends Component {
     return (
       <AppProvider>
         <AppConsumer>
-          {({ currentTask, tasks }) => {
+          {({ currentTaskId, tasks }) => {
             debugger;
             return (
               <ModalProvider>
@@ -53,7 +53,10 @@ class App extends Component {
                         ))}
                         {shouldShowModal && (
                           <Modal>
-                            <TaskForm {...currentTask} />
+                            <TaskForm
+                              id={currentTaskId}
+                              {...tasks[currentTaskId]}
+                            />
                           </Modal>
                         )}
                       </div>

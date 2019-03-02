@@ -22,25 +22,33 @@ export class AppProvider extends React.Component {
       [uuid()]: {
         title,
         description,
-        dueDate,
+        dueDate: new Date(dueDate),
         stage: this.state.stage,
       },
     };
     this.setState({ tasks: { ...this.state.tasks, ...newTask } });
   };
 
-  updateTaskStage = (taskId, newStage) => {
-    // if (newStage === stages.completed){
+  deleteTask = (e, id) => {
+    const { [id]: value, ...newTasks } = this.state.tasks;
+    debugger;
+    this.setState({ tasks: newTasks });
+  };
 
-    // }
+  updateTaskStage = (taskId, newStage) => {
+    debugger;
     const newDueDate =
-      newStage === stages.completed
-        ? "today"
+      stages[newStage] === stages.completed
+        ? new Date()
         : this.state.tasks[taskId].dueDate;
     this.setState({
       tasks: {
         ...this.state.tasks,
-        [taskId]: { ...this.state.tasks[taskId], stage: newStage },
+        [taskId]: {
+          ...this.state.tasks[taskId],
+          stage: newStage,
+          dueDate: newDueDate,
+        },
       },
     });
   };
@@ -52,7 +60,8 @@ export class AppProvider extends React.Component {
         value={{
           onChange: this.onChange,
           createTask: this.createTask,
-          currentTask: state.tasks[state.currentTaskId],
+          deleteTask: this.deleteTask,
+          currentTaskId: state.currentTaskId,
           updateTaskStage: this.updateTaskStage,
           tasks: state.tasks,
         }}

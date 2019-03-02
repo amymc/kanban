@@ -55,7 +55,9 @@ const Card = ({ description, dueDate, id, title, stage }) => {
       );
     }
     return (
-      <button onClick={() => updateTaskStage(id, stages.inProgress)}>
+      <button
+        onClick={() => updateTaskStage(id, getKeyForStage(stages.inProgress))}
+      >
         Undo
       </button>
     );
@@ -65,7 +67,8 @@ const Card = ({ description, dueDate, id, title, stage }) => {
     <div className={card}>
       <section onClick={onClick}>
         {title}
-        Due {new Date(dueDate).toDateString()}
+        {stages[stage] === stages.completed ? `Completed` : `Due`}{" "}
+        {dueDate.toDateString()}
         {description}
       </section>
       {renderButtons(stage)}

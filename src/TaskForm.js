@@ -27,7 +27,7 @@ const buttonWrapper = css({
   justifyContent: "flex-end",
 });
 
-const TaskForm = ({ title, description, dueDate }) => {
+const TaskForm = ({ title, description, dueDate, id }) => {
   const { toggleModal } = useModal();
   const { createTask, deleteTask } = useApp();
   debugger;
@@ -82,8 +82,8 @@ const TaskForm = ({ title, description, dueDate }) => {
       />
 
       <div className={buttonWrapper}>
-        <Button label='Delete' type='danger' onClick={deleteTask} />
-        {title && <Button label='Delete' onClick={deleteTask} />}
+        <Button label='Delete' type='danger' onClick={e => deleteTask(e, id)} />
+        {title && <Button label='Delete' onClick={e => deleteTask(e, id)} />}
         <Button label='Cancel' onClick={toggleModal} />
         <Button label='Create' onClick={onSubmit} />
       </div>
