@@ -1,25 +1,27 @@
 import React from "react";
 import { css } from "emotion";
+import styled from "@emotion/styled";
 import { useApp } from "./App.context";
 import { useModal } from "./Modal.context";
 import Card from "./Card";
 import Button from "./Button";
 
-const column = css({
-  width: 240,
-  display: "inline-flex",
-  flexDirection: "column",
-  justifyContent: "space-between",
-  overflow: "hidden",
-  backgroundColor: "#fff",
-  borderRadius: 8,
-  margin: "0 8px",
-});
+const Container = styled.div`
+  width: 240px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 8px;
+  margin: 0 8px;
+  padding-bottom: ${props => (props.canCreateTask ? "0" : "42px")};
+`;
 
-const h2 = css({
-  margin: "30px 22px",
-  fontSize: 14,
-});
+const h2 = css`
+  margin: 30px 22px 18px 22px;
+  font-size: 14px;
+`;
 
 const large = css`
   border-radius: 0;
@@ -39,7 +41,7 @@ const Column = ({ canCreateTask, heading, tasks, stage }) => {
   };
 
   return (
-    <div className={column}>
+    <Container canCreateTask={canCreateTask}>
       <h2 className={h2}>{heading}</h2>
       {Object.entries(tasks).map(([id, task], index) => {
         return <Card key={index} id={id} {...task} />;
@@ -47,7 +49,7 @@ const Column = ({ canCreateTask, heading, tasks, stage }) => {
       {canCreateTask && (
         <Button label='Create Task' onClick={onClick} buttonStyle={large} />
       )}
-    </div>
+    </Container>
   );
 };
 

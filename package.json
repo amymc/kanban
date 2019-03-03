@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@emotion/core": "^10.0.7",
+    "@emotion/styled": "^10.0.7",
     "babel-loader": "^8.0.5",
     "emotion": "^10.0.7",
     "react": "^16.8.3",

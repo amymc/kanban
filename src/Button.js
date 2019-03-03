@@ -16,6 +16,7 @@ const button = css({
 });
 
 const Button = ({ label, onClick, buttonStyle, type }) => {
+  debugger;
   return (
     <button
       type={type ? type : "button"}
