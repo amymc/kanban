@@ -117,7 +117,7 @@ const TaskForm = ({ title, description, dueDate, id }) => {
         )}
         <Button label='Cancel' buttonStyle={flatButton} onClick={toggleModal} />
         {title ? (
-          <Button type='submit' label='Edit' />
+          <Button type='submit' label='Save' />
         ) : (
           <Button type='submit' label='Create' />
         )}

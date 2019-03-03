@@ -7,6 +7,7 @@ const button = css({
   color: "#fff",
   border: "none",
   borderRadius: 8,
+  padding: "14px 18px",
   fontFamily: "Arial, Helvetica, sans-serif",
   fontSize: 14,
   "&:hover": {
@@ -15,12 +16,13 @@ const button = css({
   },
 });
 
-const Button = ({ label, onClick, buttonStyle, type }) => {
+const Button = ({ label, onClick, buttonStyle, style, type }) => {
   debugger;
   return (
     <button
       type={type ? type : "button"}
       className={`${button} ${buttonStyle}`}
+      style={style}
       onClick={onClick}
     >
       {label}

@@ -15,16 +15,17 @@ const Container = styled.div`
   background-color: #fff;
   border-radius: 8px;
   margin: 0 8px;
-  padding-bottom: ${props => (props.canCreateTask ? "0" : "42px")};
+  padding-bottom: ${props => (props.canCreateTask ? "0" : "57px")};
 `;
 
 const h2 = css`
-  margin: 30px 22px 18px 22px;
+  margin: 30px 22px 0 22px;
   font-size: 14px;
 `;
 
 const large = css`
   border-radius: 0;
+  margin-top: 15px;
 `;
 
 const Column = ({ canCreateTask, heading, tasks, stage }) => {
