@@ -16,13 +16,15 @@ export class AppProvider extends React.Component {
     this.setState({ [key]: value });
   };
 
-  createTask = ({ title, description, dueDate }, id) => {
+  saveTask = ({ title, description, dueDate }, id) => {
+    const { stage, tasks } = this.state;
+    const currentStage = tasks[id] ? tasks[id].stage : stage;
     const newTask = {
       [id || uuid()]: {
         title,
         description,
         dueDate: new Date(dueDate),
-        stage: this.state.stage,
+        stage: currentStage,
       },
     };
     this.setState({ tasks: { ...this.state.tasks, ...newTask } });
@@ -38,6 +40,7 @@ export class AppProvider extends React.Component {
       stages[newStage] === stages.completed
         ? new Date()
         : this.state.tasks[taskId].dueDate;
+
     this.setState({
       tasks: {
         ...this.state.tasks,
@@ -56,7 +59,7 @@ export class AppProvider extends React.Component {
       <AppContext.Provider
         value={{
           onChange: this.onChange,
-          createTask: this.createTask,
+          saveTask: this.saveTask,
           deleteTask: this.deleteTask,
           currentTaskId: state.currentTaskId,
           updateTaskStage: this.updateTaskStage,

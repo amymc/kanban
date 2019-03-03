@@ -1,7 +1,8 @@
 {
-  "name": "donut",
+  "name": "kanban",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://amymccarthy.co/kanban",
   "dependencies": {
     "@emotion/core": "^10.0.7",
     "@emotion/styled": "^10.0.7",
