@@ -73,8 +73,9 @@ const TaskForm = ({ title, description, dueDate, id }) => {
   };
 
   const onSubmit = e => {
+    debugger;
     e.preventDefault();
-    createTask(values);
+    createTask(values, id);
     toggleModal();
   };
 
@@ -115,7 +116,11 @@ const TaskForm = ({ title, description, dueDate, id }) => {
           <Button label='Delete' buttonStyle={danger} onClick={onDelete} />
         )}
         <Button label='Cancel' buttonStyle={flatButton} onClick={toggleModal} />
-        <Button type='submit' label='Create' />
+        {title ? (
+          <Button type='submit' label='Edit' />
+        ) : (
+          <Button type='submit' label='Create' />
+        )}
       </div>
     </form>
   );

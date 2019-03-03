@@ -17,9 +17,9 @@ export class AppProvider extends React.Component {
     this.setState({ [key]: value });
   };
 
-  createTask = ({ title, description, dueDate }) => {
+  createTask = ({ title, description, dueDate }, id) => {
     const newTask = {
-      [uuid()]: {
+      [id || uuid()]: {
         title,
         description,
         dueDate: new Date(dueDate),

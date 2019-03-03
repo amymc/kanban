@@ -73,7 +73,7 @@ const Card = ({ description, dueDate, id, title, stage }) => {
     <div className={card}>
       <section className={body} onClick={onClick}>
         {title}
-        {stages[stage] === stages.completed ? `Completed` : `Due`}{" "}
+        {stages[stage] === stages.completed ? `Completed` : `Due`}
         {dueDate.toDateString()}
         {description}
       </section>
