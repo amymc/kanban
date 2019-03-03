@@ -52,7 +52,6 @@ const flatButton = css`
 const TaskForm = ({ title, description, dueDate, id }) => {
   const { toggleModal } = useModal();
   const { createTask, deleteTask } = useApp();
-  debugger;
 
   const [values, setValues] = useState({
     title: title || "",
@@ -68,13 +67,11 @@ const TaskForm = ({ title, description, dueDate, id }) => {
   };
 
   const onDelete = () => {
-    debugger;
     deleteTask(id);
     toggleModal();
   };
 
   const onSubmit = e => {
-    debugger;
     e.preventDefault();
     createTask(values, id);
     toggleModal();

@@ -13,7 +13,6 @@ export class AppProvider extends React.Component {
   };
 
   onChange = (key, value) => {
-    debugger;
     this.setState({ [key]: value });
   };
 
@@ -35,7 +34,6 @@ export class AppProvider extends React.Component {
   };
 
   updateTaskStage = (taskId, newStage) => {
-    debugger;
     const newDueDate =
       stages[newStage] === stages.completed
         ? new Date()
