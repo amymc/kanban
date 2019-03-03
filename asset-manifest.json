@@ -1,13 +1,13 @@
 {
   "main.css": "/kanban/static/css/main.d3f9b8e4.chunk.css",
-  "main.js": "/kanban/static/js/main.7c382e55.chunk.js",
-  "main.js.map": "/kanban/static/js/main.7c382e55.chunk.js.map",
+  "main.js": "/kanban/static/js/main.54fc0d29.chunk.js",
+  "main.js.map": "/kanban/static/js/main.54fc0d29.chunk.js.map",
   "runtime~main.js": "/kanban/static/js/runtime~main.1e6a82ac.js",
   "runtime~main.js.map": "/kanban/static/js/runtime~main.1e6a82ac.js.map",
   "static/js/2.aa7a71ca.chunk.js": "/kanban/static/js/2.aa7a71ca.chunk.js",
   "static/js/2.aa7a71ca.chunk.js.map": "/kanban/static/js/2.aa7a71ca.chunk.js.map",
   "index.html": "/kanban/index.html",
-  "precache-manifest.03f9c9a6f22e996a6bd4097c3adfe072.js": "/kanban/precache-manifest.03f9c9a6f22e996a6bd4097c3adfe072.js",
+  "precache-manifest.3d1520539252a301e359076e73bcb8ee.js": "/kanban/precache-manifest.3d1520539252a301e359076e73bcb8ee.js",
   "service-worker.js": "/kanban/service-worker.js",
   "static/css/main.d3f9b8e4.chunk.css.map": "/kanban/static/css/main.d3f9b8e4.chunk.css.map"
 }
