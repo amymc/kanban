@@ -5,7 +5,7 @@ import { colors, defaultFont } from "./styleGlobals";
 const button = css`
   ${defaultFont};
   height: 42px;
-  background-color: ${colors.blue};
+  background-color: var(--background-color);
   color: ${colors.white};
   border: none;
   border-radius: 8px;
@@ -16,10 +16,14 @@ const button = css`
   }
 `;
 
-const Button = ({ label, onClick, buttonStyle, style, type }) => {
+const Button = ({ label, onClick, buttonStyle, isSecondaryStyle, type }) => {
   return (
     <button
-      style={style}
+      style={{
+        "--background-color": `${
+          isSecondaryStyle ? colors.green : colors.blue
+        }`,
+      }}
       type={type ? type : "button"}
       className={`${button} ${buttonStyle}`}
       onClick={onClick}

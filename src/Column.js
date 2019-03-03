@@ -2,8 +2,8 @@ import React from "react";
 import { css } from "emotion";
 import styled from "@emotion/styled";
 import { useApp } from "./App.context";
-import { useModal } from "./Modal.context";
-import Card from "./Card";
+import { useModal } from "./Modal/Modal.context";
+import Card from "./Card/Card";
 import Button from "./Button";
 import { colors } from "./styleGlobals";
 

@@ -1,10 +1,10 @@
 import React from "react";
 import { css } from "emotion";
 import { AppProvider, AppConsumer } from "./App.context.js";
-import { ModalProvider, ModalConsumer } from "./Modal.context";
+import { ModalProvider, ModalConsumer } from "./Modal/Modal.context";
 import Column from "./Column";
-import Modal from "./Modal";
-import TaskForm from "./TaskForm";
+import Modal from "./Modal/Modal";
+import TaskForm from "./Forms/TaskForm";
 import { getTasksByStage, stages } from "./utils";
 import { colors, defaultFont } from "./styleGlobals";
 

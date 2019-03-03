@@ -1,12 +1,12 @@
 import React from "react";
 import { css } from "emotion";
 import styled from "@emotion/styled";
-import { useApp } from "./App.context";
-import { useModal } from "./Modal.context";
+import { useApp } from "../App.context";
+import { useModal } from "../Modal/Modal.context";
 import CardButtons from "./CardButtons";
-import Calendar from "./assets/Calendar";
-import { stages } from "./utils";
-import { colors } from "./styleGlobals";
+import Calendar from "../assets/Calendar";
+import { stages } from "../utils";
+import { colors } from "../styleGlobals";
 
 const Container = styled.div`
   margin: 15px 10px auto 10px;

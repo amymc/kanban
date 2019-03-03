@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
 import { css } from "emotion";
-import Button from "./Button";
-import { useApp } from "./App.context";
-import { getKeyForStage, stages } from "./utils";
-import { colors } from "./styleGlobals";
+import Button from "../Button";
+import { useApp } from "../App.context";
+import { getKeyForStage, stages } from "../utils";
+import { colors } from "../styleGlobals";
 
 const buttonWrapper = css`
   display: flex;
@@ -36,7 +36,7 @@ const CardButtons = ({ id, stage }) => {
           />
           <Button
             buttonStyle={cardButton}
-            style={{ backgroundColor: colors.green }}
+            isSecondaryStyle
             onClick={() =>
               updateTaskStage(id, getKeyForStage(stages.completed))
             }

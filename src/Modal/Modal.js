@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { css } from "emotion";
-import { colors } from "./styleGlobals";
+import { colors } from "../styleGlobals";
 
 const modal = css`
   position: absolute;

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { css } from "emotion";
-import { useModal } from "./Modal.context";
-import { useApp } from "./App.context";
-import Button from "./Button";
-import { colors } from "./styleGlobals";
+import { useModal } from "../Modal/Modal.context";
+import { useApp } from "../App.context";
+import Button from "../Button";
+import { colors } from "../styleGlobals";
 
 const taskForm = css`
   display: flex;
