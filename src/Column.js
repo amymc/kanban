@@ -18,7 +18,12 @@ const column = css({
 
 const h2 = css({
   margin: "30px 22px",
+  fontSize: 14,
 });
+
+const large = css`
+  border-radius: 0;
+`;
 
 const Column = ({ canCreateTask, heading, tasks, stage }) => {
   const { onChange } = useApp();
@@ -29,6 +34,7 @@ const Column = ({ canCreateTask, heading, tasks, stage }) => {
     e.preventDefault();
     debugger;
     onChange("stage", stage);
+    onChange("currentTaskId", null);
     toggleModal();
   };
 
@@ -39,7 +45,7 @@ const Column = ({ canCreateTask, heading, tasks, stage }) => {
         return <Card key={index} id={id} {...task} />;
       })}
       {canCreateTask && (
-        <Button label='Create Task' onClick={onClick} type='large' />
+        <Button label='Create Task' onClick={onClick} buttonStyle={large} />
       )}
     </div>
   );

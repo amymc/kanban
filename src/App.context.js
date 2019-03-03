@@ -9,7 +9,7 @@ export class AppProvider extends React.Component {
   state = {
     stage: null,
     currentTaskId: null,
-    tasks: JSON.parse(localStorage.getItem("tasks")) || {},
+    tasks: {},
   };
 
   onChange = (key, value) => {
@@ -22,42 +22,34 @@ export class AppProvider extends React.Component {
       [uuid()]: {
         title,
         description,
-        dueDate: Date.parse(new Date(dueDate)),
+        dueDate: new Date(dueDate),
         stage: this.state.stage,
       },
     };
-    this.setState({ tasks: { ...this.state.tasks, ...newTask } }, () =>
-      localStorage.setItem("tasks", JSON.stringify(this.state.tasks))
-    );
+    this.setState({ tasks: { ...this.state.tasks, ...newTask } });
   };
 
   deleteTask = (e, id) => {
     const { [id]: value, ...newTasks } = this.state.tasks;
-    debugger;
-    this.setState({ tasks: newTasks }, () =>
-      localStorage.setItem("tasks", JSON.stringify(this.state.tasks))
-    );
+    this.setState({ tasks: newTasks });
   };
 
   updateTaskStage = (taskId, newStage) => {
     debugger;
     const newDueDate =
       stages[newStage] === stages.completed
-        ? Date.parse(new Date())
+        ? new Date()
         : this.state.tasks[taskId].dueDate;
-    this.setState(
-      {
-        tasks: {
-          ...this.state.tasks,
-          [taskId]: {
-            ...this.state.tasks[taskId],
-            stage: newStage,
-            dueDate: newDueDate,
-          },
+    this.setState({
+      tasks: {
+        ...this.state.tasks,
+        [taskId]: {
+          ...this.state.tasks[taskId],
+          stage: newStage,
+          dueDate: newDueDate,
         },
       },
-      () => localStorage.setItem("tasks", JSON.stringify(this.state.tasks))
-    );
+    });
   };
 
   render() {

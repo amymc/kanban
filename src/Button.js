@@ -1,33 +1,27 @@
 import React from "react";
 import { css } from "emotion";
-// import { css } from "@emotion/core";
 
-const button = css`
-  height: 42px;
-  background-color: #60a7f0;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 14;
-  &:hover: {
-    backgroundColor: #7858f6;
-    cursor: pointer;
+const button = css({
+  height: 42,
+  backgroundColor: "#60a7f0",
+  color: "#fff",
+  border: "none",
+  borderRadius: 8,
+  fontFamily: "Arial, Helvetica, sans-serif",
+  fontSize: 14,
+  "&:hover": {
+    backgroundColor: "#7858f6",
+    cursor: "pointer",
   },
-`;
+});
 
-const danger = css`
-  margin-right: auto;
-  color: #ec3330;
-`;
-
-const large = css`
-  border-radius: none;
-`;
-
-const Button = ({ label, onClick, type }) => {
+const Button = ({ label, onClick, buttonStyle, type }) => {
   return (
-    <button type='button' className={button} onClick={onClick}>
+    <button
+      type={type ? type : "button"}
+      className={`${button} ${buttonStyle}`}
+      onClick={onClick}
+    >
       {label}
     </button>
   );

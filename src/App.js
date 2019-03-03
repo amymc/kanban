@@ -8,6 +8,7 @@ import TaskForm from "./TaskForm";
 import { stages } from "./utils";
 
 const app = css({
+  position: "relative",
   height: "100%",
   padding: 40,
   backgroundColor: "#f4f3f8",
@@ -17,7 +18,6 @@ const app = css({
 
 const appInner = css({
   display: "flex",
-  position: "relative",
   justifyContent: "center",
 });
 

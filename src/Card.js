@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { css } from "emotion";
 import { useApp } from "./App.context";
 import { useModal } from "./Modal.context";
+import Button from "./Button";
 import { stages } from "./utils";
 
 const card = css({
@@ -66,12 +67,14 @@ const Card = ({ description, dueDate, id, title, stage }) => {
     );
   };
 
+  debugger;
+
   return (
     <div className={card}>
       <section className={body} onClick={onClick}>
         {title}
         {stages[stage] === stages.completed ? `Completed` : `Due`}{" "}
-        {new Date(dueDate).toDateString()}
+        {dueDate.toDateString()}
         {description}
       </section>
       {renderButtons(stage)}

@@ -15,16 +15,37 @@ const heading = css({
 });
 
 const input = css({
-  height: 32,
+  minHeight: 32,
   border: "2px solid #e9e9ef",
   borderRadius: 5,
   padding: 5,
   margin: "5px 0",
 });
 
+const largeInput = css`
+  ${input};
+  min-height: 64px;
+  max-width: 352px;
+`;
+
 const buttonWrapper = css({
   display: "flex",
   justifyContent: "flex-end",
+  marginTop: 14,
+});
+
+const danger = css({
+  marginRight: "auto",
+  backgroundColor: "#ec3330",
+});
+
+const flatButton = css({
+  color: "#60a7f0",
+  backgroundColor: "transparent",
+  marginRight: 8,
+  "&:hover": {
+    color: "#fff",
+  },
 });
 
 const TaskForm = ({ title, description, dueDate, id }) => {
@@ -45,6 +66,12 @@ const TaskForm = ({ title, description, dueDate, id }) => {
     });
   };
 
+  const onDelete = () => {
+    debugger;
+    deleteTask(id);
+    toggleModal();
+  };
+
   const onSubmit = e => {
     e.preventDefault();
     createTask(values);
@@ -63,19 +90,19 @@ const TaskForm = ({ title, description, dueDate, id }) => {
         onChange={onChange}
         required
       />
-      <input
+      <textarea
         type='text'
         value={values.description}
         placeholder='Description'
         name='description'
-        className={input}
+        className={largeInput}
         onChange={onChange}
       />
       <input
         type='text'
         onFocus={e => (e.currentTarget.type = "date")}
         onBlur={e => (e.currentTarget.type = "text")}
-        value={values.dueDate}
+        value={values.dueDate.toLocaleString().split(",")[0]}
         placeholder='Due on'
         name='dueDate'
         className={input}
@@ -84,10 +111,11 @@ const TaskForm = ({ title, description, dueDate, id }) => {
       />
 
       <div className={buttonWrapper}>
-        <Button label='Delete' type='danger' onClick={e => deleteTask(e, id)} />
-        {title && <Button label='Delete' onClick={e => deleteTask(e, id)} />}
-        <Button label='Cancel' onClick={toggleModal} />
-        <input type='submit' label='Create' />
+        {title && (
+          <Button label='Delete' buttonStyle={danger} onClick={onDelete} />
+        )}
+        <Button label='Cancel' buttonStyle={flatButton} onClick={toggleModal} />
+        <Button type='submit' label='Create' />
       </div>
     </form>
   );
