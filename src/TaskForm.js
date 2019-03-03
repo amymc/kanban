@@ -3,24 +3,25 @@ import { css } from "emotion";
 import { useModal } from "./Modal.context";
 import { useApp } from "./App.context";
 import Button from "./Button";
+import { colors } from "./styleGlobals";
 
-const taskForm = css({
-  display: "flex",
-  flexDirection: "column",
-});
+const taskForm = css`
+  display: flex;
+  flex-direction: column;
+`;
 
-const heading = css({
-  margin: "0 0 12px 0",
-  fontSize: 16,
-});
+const heading = css`
+  margin: 0 0 12px 0;
+  font-size: 16px;
+`;
 
-const input = css({
-  minHeight: 32,
-  border: "2px solid #e9e9ef",
-  borderRadius: 5,
-  padding: 5,
-  margin: "5px 0",
-});
+const input = css`
+  min-height: 32px;
+  border: 2px solid ${colors.darkGrey};
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px 0;
+`;
 
 const largeInput = css`
   ${input};
@@ -28,25 +29,25 @@ const largeInput = css`
   max-width: 352px;
 `;
 
-const buttonWrapper = css({
-  display: "flex",
-  justifyContent: "flex-end",
-  marginTop: 14,
-});
+const buttonWrapper = css`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 14px;
+`;
 
-const danger = css({
-  marginRight: "auto",
-  backgroundColor: "#ec3330",
-});
+const danger = css`
+  margin-right: auto;
+  background-color: ${colors.red};
+`;
 
-const flatButton = css({
-  color: "#60a7f0",
-  backgroundColor: "transparent",
-  marginRight: 8,
-  "&:hover": {
-    color: "#fff",
-  },
-});
+const flatButton = css`
+  color: ${colors.blue};
+  background-color: transparent;
+  margin-right: 8px;
+  &:hover {
+    color: ${colors.white};
+  }
+`;
 
 const TaskForm = ({ title, description, dueDate, id }) => {
   const { toggleModal } = useModal();

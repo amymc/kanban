@@ -29,7 +29,7 @@ export class AppProvider extends React.Component {
     this.setState({ tasks: { ...this.state.tasks, ...newTask } });
   };
 
-  deleteTask = (e, id) => {
+  deleteTask = id => {
     const { [id]: value, ...newTasks } = this.state.tasks;
     this.setState({ tasks: newTasks });
   };

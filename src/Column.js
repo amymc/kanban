@@ -5,6 +5,7 @@ import { useApp } from "./App.context";
 import { useModal } from "./Modal.context";
 import Card from "./Card";
 import Button from "./Button";
+import { colors } from "./styleGlobals";
 
 const Container = styled.div`
   width: 240px;
@@ -12,7 +13,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-  background-color: #fff;
+  background-color: ${colors.white};
   border-radius: 8px;
   margin: 0 8px;
   padding-bottom: ${props => (props.canCreateTask ? "0" : "57px")};
@@ -31,11 +32,9 @@ const large = css`
 const Column = ({ canCreateTask, heading, tasks, stage }) => {
   const { onChange } = useApp();
   const { toggleModal } = useModal();
-  debugger;
 
   const onClick = e => {
     e.preventDefault();
-    debugger;
     onChange("stage", stage);
     onChange("currentTaskId", null);
     toggleModal();

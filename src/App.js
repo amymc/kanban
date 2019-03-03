@@ -6,20 +6,20 @@ import Column from "./Column";
 import Modal from "./Modal";
 import TaskForm from "./TaskForm";
 import { stages } from "./utils";
+import { colors, defaultFont } from "./styleGlobals";
 
-const app = css({
-  position: "relative",
-  height: "100%",
-  padding: 40,
-  backgroundColor: "#f4f3f8",
-  fontFamily: "Arial, Helvetica, sans-serif",
-  fontSize: 14,
-});
+const app = css`
+  position: relative;
+  height: 100%;
+  padding: 40px;
+  background-color: ${colors.lightGrey};
+  ${defaultFont};
+`;
 
-const appInner = css({
-  display: "flex",
-  justifyContent: "center",
-});
+const appInner = css`
+  display: flex;
+  justify-content: center;
+`;
 
 class App extends Component {
   getTasksByStage = (tasks, stage) => {

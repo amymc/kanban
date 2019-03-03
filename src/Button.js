@@ -1,28 +1,28 @@
 import React from "react";
 import { css } from "emotion";
+import { colors, defaultFont } from "./styleGlobals";
 
-const button = css({
-  height: 42,
-  backgroundColor: "#60a7f0",
-  color: "#fff",
-  border: "none",
-  borderRadius: 8,
-  padding: "14px 18px",
-  fontFamily: "Arial, Helvetica, sans-serif",
-  fontSize: 14,
-  "&:hover": {
-    backgroundColor: "#7858f6",
-    cursor: "pointer",
-  },
-});
+const button = css`
+  ${defaultFont};
+  height: 42px;
+  background-color: ${colors.blue};
+  color: ${colors.white};
+  border: none;
+  border-radius: 8px;
+  padding: 14px 18px;
+  &:hover {
+    background-color: ${colors.purple};
+    cursor: pointer;
+  }
+`;
 
 const Button = ({ label, onClick, buttonStyle, style, type }) => {
   debugger;
   return (
     <button
+      style={style}
       type={type ? type : "button"}
       className={`${button} ${buttonStyle}`}
-      style={style}
       onClick={onClick}
     >
       {label}
